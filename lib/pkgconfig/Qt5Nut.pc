@@ -1,0 +1,13 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib/x86_64-linux-gnu
+includedir=${prefix}/include/x86_64-linux-gnu/qt5
+
+
+Name: Qt5 Nut
+Description: Qt Nut module
+Version: 0.6.1
+Libs: -lQt5Nut 
+Cflags: -DQT_NUT_LIB -I${includedir}/QtNut -I${includedir}
+Requires: Qt5Core Qt5Sql Qt5Gui
+
