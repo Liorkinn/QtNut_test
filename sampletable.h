@@ -7,37 +7,33 @@
 class sampleTable : public Nut::Table
 {
     Q_OBJECT
-   // Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
-   // Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
+    Q_PROPERTY(QString type_weapon READ type_weapon WRITE setType_weapon NOTIFY typeWeaponChanged)
 
-   // int m_id;
-
-    QString m_name;
+    int m_id;
+    QString m_type_weapon;
 
     // BEGIN OF NUT MACROS
-    NUT_PRIMARY_AUTO_INCREMENT(id)
-
-    NUT_DECLARE_FIELD(int, id, id, setId)
-    NUT_FIELD(QString, name)
-
-   // NUT_NOT_NULL(id)
-   // NUT_NOT_NULL(name)
-
+    NUT_PRIMARY_KEY(id)
+    NUT_FIELD(int, id)
+    NUT_FIELD(QString, type_weapon)
+    NUT_FIELD(QString, name_short)
+    NUT_FIELD(QString, name_full)
+    NUT_NOT_NULL(id)
     //END OF NUT MACROS
 
 public:
     explicit sampleTable(QObject *parent = nullptr);
-
-   // int id() const;
-    QString name() const;
+    int id() const;
+    QString type_weapon() const;
 
 public Q_SLOTS:
-   // void setId(int id);
-   // void setName(QString name);
+    void setId(int id);
+    void setType_weapon(QString name);
 
 Q_SIGNALS:
-    //void idChanged(int id);
-   // void nameChanged(QString name);
+    void idChanged(int id);
+    void typeWeaponChanged(QString name);
 };
 
 #endif // SAMPLETABLE_H

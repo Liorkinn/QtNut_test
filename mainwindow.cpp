@@ -12,22 +12,33 @@ MainWindow::MainWindow(QWidget *parent)
     qRegisterMetaType<SampleDataBase*>();
 
     SampleDataBase db;
+
     db.setDriver("QPSQL");
-    db.setDatabaseName("test_spiral");
+    db.setDatabaseName("isbu");
     db.setHostName("127.0.0.1");
     db.setUserName("postgres");
     db.setPassword("1");
     db.open();
 
-//Post::idField()
-   // auto ids = db.posts().query()
-   //     ->select(Post::idField());
-   // auto onlyTech = db.posts()->query().where(sampleTable::nameField() == "Техник").toList();
-    auto list = db.posts()->query().select(sampleTable::nameField());
 
-    foreach (auto str, list) {
-        qDebug() << str;
+    Nut::RowList<sampleTable> allList = db.weapons()->query().toList();
+    Nut::RowList<sampleTable> listWhere = db.weapons()->query().where(sampleTable::idField() == "1").toList();
+
+    qDebug() << "Запрос на вывод всей таблицы:";
+    foreach (Nut::Row<sampleTable> t, allList) {
+        qDebug() << t.get()->id();
+        qDebug() << t.get()->type_weapon();
     }
+//    qDebug() << "\nЗапрос с выборкой:";
+//    foreach (Nut::Row<sampleTable> t, listWhere) {
+//        qDebug() << t.data()->id() << "||" << t.data()->name_full();
+//    }
+
+//    auto listId = db.weapons()->query().select(sampleTable::idField());
+
+//    foreach (auto str, listId) {
+//        qDebug() << str;
+//    }
 }
 
 MainWindow::~MainWindow()

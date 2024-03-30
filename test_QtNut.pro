@@ -37,7 +37,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../Nut/lib/release/ -lQt5Nut
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../Nut/lib/debug/ -lQt5Nut
-else:unix: LIBS += -L$$PWD/../Nut/lib/ -lQt5Nut
+unix: LIBS += -L/home/mars/QtNut_test-main/lib/ -lQt5Nut

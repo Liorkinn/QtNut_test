@@ -2,33 +2,33 @@
 
 sampleTable::sampleTable(QObject *parent) : Nut::Table(parent)
 {
-   // init();
+    init();
 }
 
-//int sampleTable::id() const
-//{
-//    return m_id;
-//}
-
-QString sampleTable::name() const
+int sampleTable::id() const
 {
-    return m_name;
+    return m_id;
 }
 
-//void sampleTable::setId(int id)
-//{
-//    if (m_id == id)
-//        return;
+QString sampleTable::type_weapon() const
+{
+    return m_type_weapon;
+}
 
-//    m_id = id;
-//    Q_EMIT idChanged(m_id);
-//}
+void sampleTable::setId(int id)
+{
+    if (m_id == id)
+        return;
 
-//void sampleTable::setName(QString name)
-//{
-//    if (m_name == name)
-//        return;
+    m_id = id;
+    Q_EMIT idChanged(m_id);
+}
 
-//    m_name = name;
-//    Q_EMIT nameChanged(m_name);
-//}
+void sampleTable::setType_weapon(QString type_weapon)
+{
+    if (m_type_weapon == type_weapon)
+        return;
+
+    m_type_weapon = type_weapon;
+    Q_EMIT typeWeaponChanged(m_type_weapon);
+}
